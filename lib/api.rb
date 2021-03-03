@@ -1,11 +1,11 @@
-require "sinatra"
+require 'sinatra'
 
-get "/" do
+get '/' do
     @text = ''
     erb :list_view
 end
 
-get "/details" do
+get '/details' do
     @text = ''
     erb :details_view
 end
