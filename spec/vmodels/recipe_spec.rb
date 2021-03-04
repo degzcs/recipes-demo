@@ -22,6 +22,9 @@ RSpec.describe Recipe do
       end
 
       it 'raises an error when the record is not found' do
+        VCR.use_cassette('fails_get_entry') do
+          expect{Recipe.by_id('invalid_id')}.to raise_error Recipe::RecipeNotFoundError
+        end
       end
     end
   end

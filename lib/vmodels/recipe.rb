@@ -2,6 +2,7 @@ require 'contentful'
 require 'byebug'
 
 class Recipe
+  RecipeNotFoundError = Class.new(StandardError)
 
   attr_reader :title, :photo, :description, :tags, :chef
 
@@ -41,7 +42,9 @@ class Recipe
     end
 
     def by_id(id)
-      self.new(client.entry(id))
+      client_entry = client.entry(id)
+      raise RecipeNotFoundError, 'The recipe could not be found' if client_entry.nil?
+      self.new(client_entry)
     end
 
     def client
