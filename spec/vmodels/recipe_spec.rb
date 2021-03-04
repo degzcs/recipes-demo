@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Recipe do
+RSpec.describe Recipe do
   context '#all' do
     it 'should retrieve all recipes from Contenful web service' do
     end
@@ -16,9 +16,19 @@ describe Recipe do
 
   context '#client' do
     it 'should create instance for the Contentful client' do
+      VCR.use_cassette('success_client_config') do
+        expect(subject.client).to be_a Contentful::Client
+      end
     end
 
-    it 'raises an error if the configuration for client is wrong' do
+    context 'when there is a wrong configuration' do
+      before :each do
+        ENV['CONTENTFUL_SPACE_ID'] = nil
+      end
+
+      it 'raises an error saying about the argument error' do
+        expect { subject.client }.to raise_error(ArgumentError)
+      end
     end
   end
 end

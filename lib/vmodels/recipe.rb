@@ -1,8 +1,7 @@
 require 'contentful'
+require 'byebug'
 
 class Recipe
-
-
   def all
   end
 
