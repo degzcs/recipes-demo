@@ -3,13 +3,28 @@ require 'byebug'
 
 class Recipe
 
+  attr_reader :title, :photo, :description, :tags, :chef
+
   #
   # Instance Methods
   #
 
   def initialize(client_entry)
     @title = client_entry.title
-    @image_url = client_entry.photo
+    @photo = client_entry.photo
+    @description = client_entry.description
+    @tags = client_entry.tags
+    @chef = client_entry.chef
+  rescue Contentful::EmptyFieldError
+    nil
+  end
+
+  def image_url
+    "https:#{photo.image_url}" unless photo.nil?
+  end
+
+  def chef_name
+    chef&.name
   end
 
   #
