@@ -1,11 +1,13 @@
 require 'sinatra'
+require_relative '../config/environment'
 
 get '/' do
-    @text = ''
-    erb :list_view
+  @recipes = Recipe.all
+  erb :list_view
 end
 
-get '/details' do
-    @text = ''
-    erb :details_view
+get '/recipes/:id' do
+  id = params[:id]
+  @recipe = Recipe.by_id(id)
+  erb :details_view
 end

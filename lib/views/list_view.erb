@@ -1,1 +1,14 @@
-<h2> <%= @text %> </h2>
+<ul class="list-group">
+  <% @recipes.each do |recipe| %>
+    <a href=<%= "recipes/#{recipe.id}" %> class="list-group-item">
+      <div class="bmd-list-group-col">
+        <p class="list-group-item-heading">
+          <%= recipe.title %>
+        </p>
+      </div>
+      <div class="material-icons pull-xs-right">
+        <img src=<%=recipe.image_url%> class="">
+      </div>
+    </a>
+  <% end %>
+</ul>

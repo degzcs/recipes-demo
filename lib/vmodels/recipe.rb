@@ -4,13 +4,14 @@ require 'byebug'
 class Recipe
   RecipeNotFoundError = Class.new(StandardError)
 
-  attr_reader :title, :photo, :description, :tags, :chef
+  attr_reader :title, :photo, :description, :tags, :chef, :id
 
   #
   # Instance Methods
   #
 
   def initialize(client_entry)
+    @id = client_entry.id
     @title = client_entry.title
     @photo = client_entry.photo
     @description = client_entry.description
