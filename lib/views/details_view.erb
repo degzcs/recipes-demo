@@ -2,7 +2,26 @@
   <img class="card-img-top" src=<%= @recipe.image_url %> alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title"><%= @recipe.title %></h5>
-    <p class="card-text"><%= @recipe.description %></p>
+    <div id="comment-md-preview-container">
+      <div class="well well-sm well-light md-preview margin-top-10" id="comment-md-preview"></div>
+    </div>
+    <% unless @recipe.chef_name.nil? %>
+      <div class="p-3 text-right">
+        <footer class="blockquote-footer">
+          <small class="text-mited"><%= ' Chef ' + @recipe.chef_name%></small>
+        </footer>
+      </div>
+    <% end %>
+    <p class="card-text">
+      <% @recipe.tags&.each do |tag|%>
+        <span class="badge badge-pill badge-light">
+          <%= tag %>
+        </span>
+      <% end %>
+    </p>
     <a href="/" class="btn btn-primary">Back</a>
   </div>
+</div>
+<div class='invisible'>
+  <span class="md-render"><%= @recipe.description %></span>
 </div>

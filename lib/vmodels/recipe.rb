@@ -15,7 +15,7 @@ class Recipe
     @title = client_entry.title
     @photo = client_entry.photo
     @description = client_entry.description
-    @tags = client_entry.tags
+    @tags = client_entry&.tags&.map(&:name)
     @chef = client_entry.chef
   rescue Contentful::EmptyFieldError
     nil

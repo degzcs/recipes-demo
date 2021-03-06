@@ -1,14 +1,17 @@
-<ul class="list-group">
-  <% @recipes.each do |recipe| %>
-    <a href=<%= "recipes/#{recipe.id}" %> class="list-group-item">
-      <div class="bmd-list-group-col">
-        <p class="list-group-item-heading">
-          <%= recipe.title %>
-        </p>
+<% @recipes.each_slice(2) do |group| %>
+  <div class="row">
+    <% group.each do |recipe| %>
+      <div class="col-md-6 space">
+        <div class="card">
+          <a href=<%= "recipes/#{recipe.id}"%> >
+            <img src=<%=recipe.image_url%> class="card-image-top img-size">
+            <div class="card-body">
+              <h5 class="card-title"><%= recipe.title %></h5>
+              <p class="card-text"><p>
+            </div>
+          </a>
+        </div>
       </div>
-      <div class="material-icons pull-xs-right">
-        <img src=<%=recipe.image_url%> class="">
-      </div>
-    </a>
-  <% end %>
-</ul>
+    <% end %>
+  </div>
+<% end %>
