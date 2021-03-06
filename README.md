@@ -1,8 +1,8 @@
-# MarleySpoonClient
+# Recipes Demo
 
 ## Install
 
-Go to the project and execute the command bellow:
+Go to the project and execute the next command:
 
 ```
 $ bundle install
@@ -19,3 +19,5 @@ $ rackup -I config.ru
 ```
 rspec spec
 ```
+## Contributos
+- Diego Gomez
