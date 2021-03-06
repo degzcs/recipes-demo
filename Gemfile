@@ -8,6 +8,8 @@ gem 'byebug'
 
 group :test do
   gem 'rspec', '~> 3.0'
+  gem 'rspec-html-matchers'
+  gem 'rack-test'
   gem 'vcr'
   gem 'webmock'
 end

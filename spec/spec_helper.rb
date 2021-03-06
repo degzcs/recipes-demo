@@ -1,6 +1,9 @@
 require_relative '../config/environment'
 require 'vcr'
 require 'webmock'
+require "rack/test"
+require "rspec-html-matchers"
+
 ENV['RACK_ENV'] = 'test'
 
 RSpec.configure do |config|
@@ -13,6 +16,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+  config.include Rack::Test::Methods
+  config.include RSpecHtmlMatchers
 end
 
 VCR.configure do |config|
