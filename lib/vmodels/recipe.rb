@@ -37,7 +37,7 @@ class Recipe
     attr_accessor :client
 
     def all
-      client.entries(content_type: 'recipe').map do |entry|
+      client.entries.map do |entry| #(content_type: 'recipe').map do |entry|
         self.new(entry)
       end
     end

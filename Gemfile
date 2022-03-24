@@ -5,6 +5,7 @@ gem 'sinatra'
 gem 'contentful'
 gem 'figaro'
 gem 'byebug'
+gem 'thin'
 
 group :test do
   gem 'rspec', '~> 3.0'
